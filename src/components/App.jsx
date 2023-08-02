@@ -5,17 +5,17 @@ import { ContactsList } from './ContactsList/ContactsList';
 import { Filter } from './Filter/Filter';
 
 export const App = () => {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(()=> JSON.parse(localStorage.getItem('contact'))??[]);
   const [filter, setFilter] = useState('');
 
   useEffect(()=>{
     contacts && localStorage.setItem('contact', JSON.stringify(contacts))
   },[contacts])
 
-  useEffect(()=>{
-    const localContacts = localStorage.getItem('contact')
-    if(localContacts) setContacts(JSON.parse(localContacts))
-  },[])
+  // useEffect(()=>{
+  //   const localContacts = localStorage.getItem('contact')
+  //   if(localContacts) setContacts(JSON.parse(localContacts))
+  // },[])
 
   const createContact = (name, number) => {
     const duplicate = contacts.some(
