@@ -12,11 +12,6 @@ export const App = () => {
     contacts && localStorage.setItem('contact', JSON.stringify(contacts))
   },[contacts])
 
-  // useEffect(()=>{
-  //   const localContacts = localStorage.getItem('contact')
-  //   if(localContacts) setContacts(JSON.parse(localContacts))
-  // },[])
-
   const createContact = (name, number) => {
     const duplicate = contacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
