@@ -2,24 +2,18 @@ import { useState } from "react";
 import css from '../ContactForm/contactForm.module.css'
 import PropTypes from 'prop-types';
 export const ContactForm = ({createContact}) =>{
-    const [state , setState] = useState({
-        name: '',
-        number: '',
-    })
-    const {name, number} = state
+    const [name,setName] = useState('');
+    const [number, setNumber] = useState('')
     const handleChange = e =>{
-        setState({
-            ...state,
-            [e.target.name]: e.target.value
-        })
+        const {name,value} = e.target
+        if(name === 'name') setName(value);
+        if(name ==='number') setNumber(value)
     }
     const handleSubmit = event =>{
         event.preventDefault()
         createContact(name,number)
-        setState({
-            name:'',
-            number:'',
-        })
+        setName('')
+        setNumber('')
     }
     
     return (
